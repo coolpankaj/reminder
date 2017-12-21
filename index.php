@@ -3,6 +3,7 @@
 <head>
 	<title>Reminder | Home</title>
 		<meta charset="utf-8">
+		<meta name="theme-color" content="blue">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel=”manifest" href="/manifest.json">
 	<!--------------------------Bootstrap 3 Linking----------------------------------------------------------->
@@ -60,38 +61,57 @@
 				
 
 				<!------------------------------Sign-Up Form-------------------------------------------->
+				<!--<style type="text/css">
+					input{display:hidden;}
+					input:invalid {  border: 2px dashed red;}
+					input:valid {  border: 2px solid green;}
+					input[type="radio"]:invalid{ border: 2px dashed red;}
+					input[type="radio"]:valid{ border: 2px solid green;}
+						
+				</style>-->
+
+				<?php		 session_start();
+						if (isset($_SESSION['loginssid']) )
+						{
+							echo "<div class='jumbotron'>";
+							echo "WHOAA.....You are logged in as &nbsp&nbsp&nbsp<strong>[".$_SESSION['loginssid']."]</strong>";
+							echo "<br><br><a href='logout.php' class='btn btn-success'>Logout</a></div>";
+						}
+				else{
+
+?>
 				<div class="row">
 					<div class="col-md-4 col-md-offset-1 " style="color: white;"  >
-							<form method="post" >
+							<form name="signup" method="post" action="signup.php"  onsubmit="return validatesignup();" >
 								<fieldset><legend style="color: white;">Sign Up </legend></fieldset>
 
 								<div class="form-group">
-									<label for="email">Email</label>
-									<input type="email" name="email" class="form-control" placeholder="Enter email" required="required">
+									<label for="email" >Email</label>
+									<input type="email" name="email" class="form-control" placeholder="Enter email" >
 								</div>
 								<div class="form-group">
-									<label for="pswd">Password</label>
-									<input type="Password" name="pswd" class="form-control" placeholder="Enter password" required="required">	
+									<label for="pswd">Password <span style="color: #ff0000">[ It's Final ]</span></label>
+									<input type="Password" name="pswd" class="form-control" placeholder="Enter password" >	
 								</div>
 						<div class="btn-group" data-toggle="buttons">
 							<label class="form-group">Gender</label><br>
-                         <label class="btn btn-primary"><input type="radio" name="gender" value="male" required="required"/> Male</label>
+                         <label class="btn btn-primary"><input type="radio" name="gender" value="male" /> Male</label>
                             <label class="btn btn-primary ">
-                                <input type="radio" name="gender" value="female" required="required"/> Female
+                                <input type="radio" name="gender" value="female" /> Female
                             </label>
                                 <label class="btn btn-primary">
-                                    <input type="radio" name="gender" value="other" required="required"/> Other
+                                    <input type="radio" name="gender" value="other"  /> Other
                                 </label>
                         </div>
 								<div class="form-group">
 									<br><label>Mobile</label>
-									<input type="text" class="form-control" name="mob" placeholder="Enter mobile number" />
+									<input type="number" class="form-control" name="mob" placeholder="Enter mobile number"  />
 									
 								</div>
 								<div class="checkbox">
-									<label><input type="checkbox" checked="">Remember me</label>
+									<label><input type="checkbox" checked >Remember me</label>
 								</div>
-								<button type="Submit" value="Submit" name="Submit" class="btn btn-info btn-block" >Submit</button>
+								<button type="Submit" value="Submit" name="Submit" class="btn btn-info btn-block"  >Submit</button>
 							</form>
 						
 					</div>
@@ -99,15 +119,15 @@
 
 					<!-------------------------------Log-In Form------------------------------------------>
 							<div class="col-md-4 col-md-offset-2" >
-							<form method="post" >
+							<form name="login" method="post" action="login.php" onsubmit="return validatelogin();" >
 								<fieldset><legend style="color: white;">Log In </legend></fieldset>
 								<div class="form-group">
 									<label for="email" style="color: white;">Email</label>
-									<input type="email" name="email" class="form-control" placeholder="Enter email" required="required">
+									<input type="email" name="email" class="form-control" placeholder="Enter email" >
 								</div>
 								<div class="form-group">
 									<label for="pswd"  style="color: white;">Password</label>
-									<input type="Password" name="pswd" class="form-control" placeholder="Enter password" required="required">	
+									<input type="Password" name="pswd" class="form-control" placeholder="Enter password" >	
 								</div>
 								
 								<div class="checkbox">
@@ -116,10 +136,16 @@
 								<button type="Submit" value="Submit" name="Submit" class="btn btn-success btn-block" >Submit</button>
 							</form>
 						
-					</div></div><br><br><hr style="height:1px;background-color:white;"  id="services">
+					</div></div><br><br><hr style="height:1px;background-color:white;border-radius:1000%;"  >
+
+
+
+					<!----------------------------------  javascript validation-------------------------------->
+					<script type="text/javascript" src="js/validation.js" ></script>
+			<?php	} ?>
 				<!------------------------------------------End Of Log-In Form------------------------------------>
 
-				<section class="jumbotron" style="background-color:#ccccff;">
+				<section class="jumbotron" style="background-color:#ccccff;" id="services">
 					<div class="row">
 						<div class="col-md-6">
 							<img  src="images/email.png" style="margin: 0 auto;" >
@@ -128,7 +154,7 @@
 					<div class="col-sm-6" >
                 	<h2 class="section-header">Notification Through Mail </h2>
                 	<p class="lead text-muted">By using this feature, You will get an alert via e-mail.This feature is completely free for all type of users.You must have proper internet connection to use this feature.<br><strong>HURRAY !!!</strong>There is no need of mobile number.  </p>
-                	<a href="#" class="btn btn-primary btn-lg">Grab Now</a>
+                	<a href="nmail.php" class="btn btn-primary btn-lg">Grab Now</a>
                 </div>            
 					</div>
 				</section>
@@ -165,10 +191,10 @@
     
     	<!-- Contact Us -->
         <br><br>
-        	<div class="container-fluid" id="contact" style="background-color:#00cca3;border-radius: 5px;color: white;"><br><br>
-        		<div class="row">
+        	<div class="container-fluid" style="background-color:#00cca3;border-radius: 5px;color: white;" id="contact" ><br><br>
+        		<div class="row" >
         			<div class="col-md-6 col-md-offset-3 text-center" style="word-wrap: break-word;word-spacing: 10px;font-size:30px;">
-				<h2 >Contact Us</h2><br>
+				<h2>Contact Us</h2><br>
 				<p><span class="glyphicon glyphicon-earphone" ></span></p>
 				<p>(+91)8427678575</p><br>
 				<p><span class="glyphicon glyphicon-envelope"></span></p>

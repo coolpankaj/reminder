@@ -1,16 +1,16 @@
 <?php
 session_start();
-if (isset($_POST['submit']))
+if (isset($_POST['Submit']))
  {
-	$user=$_POST['l_user'];
-	$pass=$_POST['l_pass'];
+	$email=$_POST['email'];
+	$password=$_POST['pswd'];
 
 		$con=mysqli_connect("localhost","root","","reminder");
-		$q="select * from signup where username='$user' and password='$pass'  ";
+		$q="select * from signup where email='$email' and password='$password'  ";
 		$qry=$con->query($q);
 		if($qry->num_rows>0)
 		{
-			$_SESSION["phpssid"]=$user;
+			$_SESSION["loginssid"]=$email;
 			echo "<script>alert('Login Successfull.....');</script>";
 			echo "<script>window.location.href='index.php';</script>";
 		}
