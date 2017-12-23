@@ -1,3 +1,7 @@
+<?php
+session_start();
+error_reporting(4); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,6 +26,8 @@
 <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">-->
 
 </head>
+<?php include('nav.php'); ?>
+<!--
 <a name="linktotop"></a>
 <body class="container-fluid" style="background-image: url(images/background.jpg);background-attachment: fixed;">
 		<nav class="navbar navbar-inverse navbar-fixed-top" >
@@ -41,14 +47,16 @@
 							<li class="active"><a href="#" >Home</a></li>
 							<li><a href="#services" >Services</a></li>
 							<li><a href="#contact" >Contact Us</a></li>
-							<!--<li><a href="#">About</a></li>-->
+							
 						</ul>
 					</div>	
 			</div>
 		</nav>
 
-	<br><br><br><br>
-				<div class="jumbotron" style="background-image: url(images/new.jpg);background-size: cover;height:400px;width: 100%;">
+	<br><br><br><br>-->
+
+
+				<div class="jumbotron" style="background-image: url(images/new.jpg);background-size: cover;height:400px;width: 100%;background-position: center;position: relative;">
 					
 					<!--<img class="img-responsive img-thumbnail center-block" src="images/new.jpg" alt="header" style="width: 100%;height: 500px;" >
 					
@@ -71,11 +79,13 @@
 				</style>-->
 
 				<?php		 session_start();
+							error_reporting(4);
 						if (isset($_SESSION['loginssid']) )
 						{
-							echo "<div class='jumbotron'>";
+							/*echo "<div class='jumbotron'>";
 							echo "WHOAA.....You are logged in as &nbsp&nbsp&nbsp<strong>[".$_SESSION['loginssid']."]</strong>";
-							echo "<br><br><a href='logout.php' class='btn btn-success'>Logout</a></div>";
+							echo "<br><br><a href='logout.php' class='btn btn-success'>Logout</a></div>";*/
+							include('profile.php');
 						}
 				else{
 
@@ -119,7 +129,7 @@
 
 					<!-------------------------------Log-In Form------------------------------------------>
 							<div class="col-md-4 col-md-offset-2" >
-							<form name="login" method="post" action="login.php" onsubmit="return validatelogin();" >
+							<form name="login" method="post" action="login.php " onsubmit="return validatelogin();" >
 								<fieldset><legend style="color: white;">Log In </legend></fieldset>
 								<div class="form-group">
 									<label for="email" style="color: white;">Email</label>
@@ -187,9 +197,12 @@
 
 
 				<!-- Footer -->
-    <footer>
+
+				<?php include('footer.php'); ?>
+
+   <!-- <footer>
     
-    	<!-- Contact Us -->
+    	
         <br><br>
         	<div class="container-fluid" style="background-color:#00cca3;border-radius: 5px;color: white;" id="contact" ><br><br>
         		<div class="row" >
@@ -206,7 +219,7 @@
         </div>
         </footer>
         	
-        <!-- Copyright etc -->
+        
        
         	<div class="container-fluid">
         		<div class="row">
