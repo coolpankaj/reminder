@@ -158,7 +158,7 @@ error_reporting(4);
 				<section class="jumbotron" style="background-color:#ccccff;" id="services">
 					<div class="row">
 						<div class="col-md-6">
-							<img  src="images/email.png" style="margin: 0 auto;" >
+							<img  src="images/bell.png" alt="bell icon" style="margin: 0 auto;" >
 						</div>
 
 					<div class="col-sm-6" >
@@ -172,7 +172,7 @@ error_reporting(4);
 				<section class="jumbotron" style="background-color:#ccccff;">
 					<div class="row">
 						<div class="col-md-6">
-							<img  src="images/msg2.png" style="margin: 0 auto;" >
+							<img  src="images/msg3.png" style="margin: 0 auto;" >
 						</div>
 
 			     	 <div class="col-sm-6">

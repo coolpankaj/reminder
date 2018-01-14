@@ -1,6 +1,6 @@
 
 <meta charset="utf-8">
-		<meta name="theme-color" content="blue">
+		<meta name="theme-color" content="#00cccc">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
 	<!--------------------------Bootstrap 3 Linking----------------------------------------------------------->
@@ -15,7 +15,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <a name="linktotop"></a>
-<body class="container-fluid" style="background-image: url(images/background.jpg);background-attachment: fixed;">
+<body class="container-fluid" style="background-image: url(images/blue.jpg);background-attachment: fixed;">
 		<nav class="navbar navbar-inverse navbar-fixed-top" >
 			<div class="container-fluid">
 				<div class="navbar-header">
